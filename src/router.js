@@ -1,4 +1,7 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router';
+
+import AppHome from './pages/AppHome.vue';
+import PostList from './pages/PostList.vue';
 
 const router = createRouter({
     history: createWebHistory(),
@@ -12,7 +15,7 @@ const router = createRouter({
             path: '/posts',
             name: 'posts',
             component: PostList
-        }
-    ]
+        },
+    ],
 });
 export {router};

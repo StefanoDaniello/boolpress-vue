@@ -1,40 +1,40 @@
 <template>
-  <h1 class="text-center">Ciao</h1>
-  <ul>
-    <li v-for="post in posts" :key="post.id">{{ post.title }}
-      <img :src="store.imgBasePath + post.image" :alt="post.title">
-    </li>
-  </ul>
-  <button @click="getAllPosts()" class="btn btn-primary">cambia pagina</button>
+  <div>
+    <h1>App</h1>
+    <main class="container">
+      <!-- <ul>
+        <li v-for="(item, index) in menuItems" :key="index">
+          <router-link :to="{ name: item.routeName }" class="nav-link">
+            {{ item.label }}
+          </router-link>
+        </li>
+      </ul> -->
+      <!-- dove viene caricato il contenuto delle rotte -->
+      <router-view></router-view>
+    </main>
+  </div>
 </template>
 
 <script>
-import { store } from './store';
-import axios from 'axios';
-export default {
-  name: 'App',
-  data() {
-    return {
-      store,
-      posts: [],
-
-    }
-  },
-  methods: {
-    getAllPosts() {
-      axios.get(this.store.apiBaseUrl + '/posts').then((res) => {
-        console.log(res.data);
-        this.posts = res.data.results;
-        //se paginazione
-        //this.posts = res.data.results.data;
-        //this.currentPage = res.data.results.current_page;
-      });
+  export default {
+    name: "App",
+    data() {
+      return {
+        // menuItems: [
+        //   {
+        //     label: "home",
+        //     routeName: "AppHome",
+        //   },
+        //   {
+        //     label: "posts",
+        //     routeName: "PostList",
+        //   },
+        // ],
+      };
     },
-  },
-  mounted() {
-    this.getAllPosts();
   }
-}
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+
+</style>
