@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>App</h1>
+      <HeaderComponent></HeaderComponent>
     <main class="container">
       <!-- <ul>
         <li v-for="(item, index) in menuItems" :key="index">
@@ -16,7 +16,11 @@
 </template>
 
 <script>
+  import HeaderComponent from './components/HeaderComponent.vue'
   export default {
+    components: {
+      HeaderComponent
+    },
     name: "App",
     data() {
       return {
