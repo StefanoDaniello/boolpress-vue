@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="bg-light">
       <HeaderComponent></HeaderComponent>
     <main class="container">
       <!-- <ul>

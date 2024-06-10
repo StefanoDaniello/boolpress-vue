@@ -1,11 +1,19 @@
 <template>
-    <h1 class="text-center">Ciao</h1>
-    <ul>
-      <li v-for="post in posts" :key="post.id">{{ post.title }}
-        <img :src="store.imgBasePath + post.image" :alt="post.title">
-      </li>
-    </ul>
-    <button @click="getAllPosts()" class="btn btn-primary">cambia pagina</button>
+    <div>
+      <h1 class="text-center">Post</h1>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3 mb-4" v-for="post in posts" :key="post.id">
+            <div class="card h-100">
+              <img :src="store.imgBasePath + post.image" class="card-img-top" :alt="post.title">
+              <div class="card-body">
+                <h5 class="card-title">{{ post.title }}</h5>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </template>
   
   <script>
