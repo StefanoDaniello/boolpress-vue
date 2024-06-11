@@ -1,48 +1,56 @@
 <template>
-    <div>
-      <h1 class="text-center">Post</h1>
-      <div class="container">
-        <div class="row">
-          <div class="col-md-3 mb-4" v-for="post in posts" :key="post.id">
-            <div class="card h-100">
-              <img :src="store.imgBasePath + post.image" class="card-img-top" :alt="post.title">
-              <div class="card-body">
-                <h5 class="card-title">{{ post.title }}</h5>
-              </div>
-            </div>
-          </div>
-        </div>
+  <div class="d-flex justify-content-between align-items-center">
+      <h1>All Posts</h1>
+      <select name="categories" id="categories">
+          <option value="">Tutte le categorie</option>
+          <option value="category.id" v-for="category in store.categories" :key="category.id">{{ category.name }}
+          </option>
+      </select>
+  </div>
+
+  <div class="row">
+      <div class="col-12 col-lg-6" v-for="post in posts" :key="post.id">
+          <CardComponent :item="post" />
       </div>
-    </div>
-  </template>
-  
-  <script>
-  import { store } from '../store';
-  import axios from 'axios';
-  export default {
-    name: 'PostList',
-    data() {
+  </div>
+
+</template>
+
+<script>
+import { store } from '../store';
+import axios from 'axios';
+import CardComponent from '../components/CardComponent.vue';
+
+export default {
+  name: 'PostList',
+  components: {
+      CardComponent
+  },
+  data() {
       return {
-        store,
-        posts: [],
-  
+          store,
+          posts: [],
+
       }
-    },
-    methods: {
+  },
+  methods: {
       getAllPosts() {
-        axios.get(this.store.apiBaseUrl + '/posts').then((res) => {
-          console.log(res.data);
-          this.posts = res.data.results;
-          //se paginazione
-          //this.posts = res.data.results.data;
-          //this.currentPage = res.data.results.current_page;
-        });
+          axios.get(this.store.apiBaseUrl + '/posts').then((res) => {
+              console.log(res.data);
+              this.posts = res.data.results;
+              //se paginazione
+              //this.posts = res.data.results.data;
+              //this.currentPage = res.data.results.current_page;
+          });
       },
-    },
-    mounted() {
+  },
+  mounted() {
       this.getAllPosts();
-    }
   }
-  </script>
-  
-  <style lang="scss" scoped></style>
+}
+
+</script>
+
+<style lang="sass" scoped>
+
+</style>
