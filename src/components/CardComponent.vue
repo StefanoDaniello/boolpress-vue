@@ -6,10 +6,9 @@
             </div>
             <div class="col-md-8">
                 <div class="card-body">
-                    <h5 class="card-title">{{ item.title }}</h5>
+                    <h5 class="card-title ">{{ item.title }}</h5>
                     <p class="card-text" v-html="item.content"></p>
-                    <p class="card-text"><small class="text-body-secondary">Last updated: 3 {{ item.updated_at
-                            }}</small>
+                    <p class="card-text"><small class="text-body-secondary">Last updated: {{ item.updated_at}}</small>
                     </p>
                     <span class="badge rounded-pill text-bg-warning me-3">{{ item.category?.name }}</span>
                     <RouterLink :to="{ name: 'single-post', params: { 'slug': item.slug } }" class="btn btn-success">
@@ -39,4 +38,14 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.card-text {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;     /* Numero massimo di righe */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-height: 5em;    
+}
+
+</style>

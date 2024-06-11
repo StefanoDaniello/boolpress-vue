@@ -3,9 +3,9 @@
         <h1>{{ post.title }}</h1>
         <img :src="store.imgBasePath + post.image" :alt="post.title">
         <p>{{ post.content }}</p>
-        <span>[{{ post.category?.name }}</span>
-        <RouterLink :to="{ name: 'single-post', params: { 'slug': 'eum-porro-sed-optio-quis-itaque-ex-harum' } }">Leggi
-            altro articolo</RouterLink>
+        <span>{{ post.category?.name }}</span> <br>
+        <RouterLink :to="{ name: 'single-post', params: { 'slug': 'slirnsswww' } }">
+            Leggi altro articolo</RouterLink>
     </div>
 </template>
 
