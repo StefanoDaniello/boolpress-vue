@@ -2,7 +2,7 @@
     <div class="card mb-3">
         <div class="row g-0">
             <div class="col-md-4">
-                <img :src="getImage" class="img-fluid rounded-start" :alt="item.title">
+                <img :src="getImage" @error="setDefaultImage" class="img-fluid rounded-start" :alt="item.title">
             </div>
             <div class="col-md-8">
                 <div class="card-body">
@@ -31,8 +31,12 @@ export default {
     },
     computed: {
         getImage() {
-
-            return this.item.image ? this.store.imgBasePath + this.item.image : '/images/bar-neon.png';
+            return this.item.image ? `${this.store.imgBasePath}${this.item.image}` : this.store.defaultImg;
+        }
+    },
+    methods: {
+        setDefaultImage(event) {
+            event.target.src = this.store.defaultImg;
         }
     }
 }
