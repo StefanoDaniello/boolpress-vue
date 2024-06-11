@@ -12,6 +12,7 @@
 <script>
 import HeaderComponent from './components/HeaderComponent.vue'
 import { store } from './store.js'
+import axios from 'axios';
 export default {
   name: 'App',
   components: {
