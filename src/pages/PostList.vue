@@ -1,15 +1,19 @@
 <template>
   <div class="d-flex justify-content-between align-items-center">
       <h1>All Posts</h1>
-      <select name="categories" id="categories" class="form-select w-25">
-          <option value="">Tutte le categorie</option>
-          <option value="category.id" v-for="category in store.categories" :key="category.id">{{ category.name }}
-          </option>
+      <select name="categories" id="categories" class="form-select w-25" 
+        @change="setParams(1)" v-model="category">
+        <option value="">Tutte le categorie</option>
+        <option :value="category.id" v-for="category in store.categories" :key="category.id">{{ category.name }}
+        </option>
       </select>
   </div>
 
   <div class="row">
-      <div class="col-12 col-lg-6" v-for="post in posts" :key="post.id">
+    <div class="col-12 "  v-if="posts.length == 0">
+      <div class="alert alert-warning text-center my-2">Nessun post trovato con la categoria: {{ selectedCategory}}</div>
+    </div>
+    <div class="col-12 col-lg-6" v-for="post in posts" :key="post.id">
         <CardComponent :item="post" />
        </div>    
     </div>
@@ -48,14 +52,19 @@ export default {
       posts: [],
       currentPage: 0,
       totalPage: 0,
+      category: '',
       params:null,
     }
   },
   methods: {
     setParams(numpage) {
+        // console.log(this.category);
         this.current_page = numpage;
         this.params={
-            page: this.current_page
+          page: this.current_page,
+        }
+        if(this.category){
+          this.params.category = this.category
         }
         this.getAllPosts();
     },
@@ -90,6 +99,12 @@ export default {
   },
   mounted() {
     this.getAllPosts();
+  },
+  computed: {
+    selectedCategory() {
+      const category = this.store.categories.find(category => category.id == this.category);
+      return category ? category.name : '';
+    }
   },
 
 }
