@@ -43,13 +43,24 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.card-text {
+.card-title {
     display: -webkit-box;
-    -webkit-line-clamp: 3;     /* Numero massimo di righe */
+    -webkit-line-clamp: 1;     /* Numero massimo di righe */
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
     max-height: 5em;    
+}
+.card-text {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;     /* Numero massimo di righe */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-height: 5em;    
+}
+.card{
+    height: 250px;
 }
 
 </style>

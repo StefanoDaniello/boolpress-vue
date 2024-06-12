@@ -12,7 +12,10 @@
       <div class="col-12 col-lg-6" v-for="post in posts" :key="post.id">
           <CardComponent :item="post" />
       </div>
+  
+      
   </div>
+
 
 </template>
 
@@ -28,8 +31,8 @@ export default {
   },
   data() {
       return {
-          store,
-          posts: [],
+        store,
+        posts: [],
 
       }
   },
@@ -37,9 +40,9 @@ export default {
       getAllPosts() {
           axios.get(this.store.apiBaseUrl + '/posts').then((res) => {
               console.log(res.data);
-              this.posts = res.data.results;
-              //se paginazione
-              //this.posts = res.data.results.data;
+              //this.posts = res.data.results;
+              //con la paginazione
+              this.posts = res.data.results.data;
               //this.currentPage = res.data.results.current_page;
           });
       },

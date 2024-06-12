@@ -39,17 +39,22 @@ export default {
       return {
           menuItems: [
               {
-                  label: 'Home',
-                  routeName: 'home'
+                label: 'Home',
+                // nome presente nel name del router
+                routeName: 'home'
               },
               {
-                  label: 'Posts',
-                  routeName: 'posts'
+                label: 'Posts',
+                routeName: 'posts'
               },
-              // {
-              //   label: 'Categorie',
-              //   routeName: 'categories'
-              // }
+              {
+                label: 'About',
+                routeName: 'about-us'
+              },
+              {
+                label: 'Contact',
+                routeName: 'contact'
+              },
           ],
           show: false
       }
