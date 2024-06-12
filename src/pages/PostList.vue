@@ -10,30 +10,30 @@
   </div>
 
   <div class="row">
-    <div class="col-12 "  v-if="posts.length == 0">
-      <div class="alert alert-warning text-center my-2">Nessun post trovato con la categoria: {{ selectedCategory}}</div>
-    </div>
-    <div class="col-12 col-lg-6" v-for="post in posts" :key="post.id">
-        <CardComponent :item="post" />
-       </div>    
-    </div>
+  <div class="col-12 "  v-if="posts.length == 0">
+    <div class="alert alert-warning text-center my-2">Nessun post trovato con la categoria: {{ selectedCategory}}</div>
+  </div>
+  <div class="col-12 col-lg-6" v-for="post in posts" :key="post.id">
+    <CardComponent :item="post" />
+    </div>    
+  </div>
 
-    <nav aria-label="..." class="d-flex justify-content-center mt-1">
-        <ul class="pagination">
-            <li class="page-item ">
-                <a class="page-link" :class="{'disabled' : currentPage <= 1}" href="#" 
-                @click.prevent="setParams(currentPage-1)">Previous</a>
-            </li>
-            <li class="page-item" v-for="page in totalPage" :key="page">
-                <a class="page-link" :class="{ 'active': currentPage == page }" href="#"
-                    @click.prevent="setParams(page)">{{ page }}</a>
-            </li>
-            <li class="page-item">
-                <a class="page-link" :class="{'disabled' : currentPage >= totalPage}" href="#"
-                    @click.prevent="setParams(currentPage+1)">Next</a>
-            </li>
-        </ul>
-    </nav>
+  <nav aria-label="..." class="d-flex justify-content-center mt-1">
+    <ul class="pagination">
+      <li class="page-item ">
+        <a class="page-link" :class="{'disabled' : currentPage <= 1}" href="#" 
+        @click.prevent="setParams(currentPage-1)">Previous</a>
+      </li>
+      <li class="page-item" v-for="page in totalPage" :key="page">
+        <a class="page-link" :class="{ 'active': currentPage == page }" href="#"
+        @click.prevent="setParams(page)">{{ page }}</a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" :class="{'disabled' : currentPage >= totalPage}" href="#"
+        @click.prevent="setParams(currentPage+1)">Next</a>
+      </li>
+    </ul>
+  </nav>
 </template>
 
 <script>
@@ -44,7 +44,7 @@ import CardComponent from '../components/CardComponent.vue';
 export default {
   name: 'PostList',
   components: {
-      CardComponent
+    CardComponent
   },
   data() {
     return {
