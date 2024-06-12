@@ -1,7 +1,7 @@
 <template>
     <div class="card mb-3">
         <div class="row g-0">
-            <div class="col-md-4">
+            <div class="col-12 col-md-4">
                 <img :src="getImage" @error="setDefaultImage" class="img-fluid rounded-start" :alt="item.title">
             </div>
             <div class="col-md-8">

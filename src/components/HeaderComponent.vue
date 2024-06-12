@@ -6,7 +6,7 @@
                   <i class="fa-solid fa-store"></i>MyBoolpress
               </router-link>
 
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+              <button class="navbar-toggler bg-white text-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                   aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"
                   @click="show = !show">
                   <span class="navbar-toggler-icon"></span>
@@ -79,6 +79,9 @@ header {
     }
   }
 }
+
 }
+
+
 </style>
                                                                                                          

@@ -18,15 +18,15 @@
         <ul class="pagination">
             <li class="page-item ">
                 <a class="page-link" :class="{'disabled' : currentPage <= 1}" href="#" 
-                @click.prevent="previewPage()">Previous</a>
+                @click.prevent="setParams(currentPage-1)">Previous</a>
             </li>
             <li class="page-item" v-for="page in totalPage" :key="page">
                 <a class="page-link" :class="{ 'active': currentPage == page }" href="#"
-                    @click.prevent="currentPage = page">{{ page }}</a>
+                    @click.prevent="setParams(page)">{{ page }}</a>
             </li>
             <li class="page-item">
                 <a class="page-link" :class="{'disabled' : currentPage >= totalPage}" href="#"
-                    @click.prevent="nextPage()">Next</a>
+                    @click.prevent="setParams(currentPage+1)">Next</a>
             </li>
         </ul>
     </nav>
@@ -52,12 +52,19 @@ export default {
     }
   },
   methods: {
-    getAllPosts() {
-        if(this.currentPage){
-            this.params = {
-            page: this.currentPage
-            }
+    setParams(numpage) {
+        this.current_page = numpage;
+        this.params={
+            page: this.current_page
         }
+        this.getAllPosts();
+    },
+    getAllPosts() {
+        // if(this.currentPage){
+        //     this.params = {
+        //     page: this.currentPage
+        //     }
+        // }
         axios.get(this.store.apiBaseUrl + '/posts',{params: this.params}).then((res) => {
         console.log(res.data);
         //this.posts = res.data.results;
@@ -68,14 +75,14 @@ export default {
         this.params=null;
     });
     },
-    nextPage() {
-        this.currentPage+=1;
-        this.getAllPosts();
-    },
-    previewPage() {
-        this.currentPage-=1;
-        this.getAllPosts();
-    },
+    // nextPage() {
+    //     this.currentPage+=1;
+    //     this.getAllPosts();
+    // },
+    // previewPage() {
+    //     this.currentPage-=1;
+    //     this.getAllPosts();
+    // },
     // changePage(page) {
     //     this.currentPage = page;
     //     this.getAllPosts();
