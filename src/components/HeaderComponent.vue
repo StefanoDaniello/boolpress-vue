@@ -64,7 +64,7 @@ export default {
 
 <style lang="scss" scoped>
 .nav-link.router-link-active {
-  color: rgb(229, 252, 21);
+  color: #3e6ef1;
 }
 header {
   background-color: rgb(61, 61, 61);
@@ -75,7 +75,7 @@ header {
   a {
     color: white;
     &:not(#logo):hover { 
-      color: rgb(174, 192, 13) !important;
+      color:  #2455db !important;
     }
   }
 }
