@@ -103,7 +103,7 @@ export default {
   computed: {
     selectedCategory() {
       const category = this.store.categories.find(category => category.id == this.category);
-      return category ? category.name : '';
+      return category ? category.name : 'category not found';
     }
   },
 
