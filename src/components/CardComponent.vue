@@ -49,7 +49,7 @@ export default {
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
-    max-height: 5em;    
+    max-height: 2em;    
 }
 .card-text {
     display: -webkit-box;
@@ -57,7 +57,7 @@ export default {
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
-    max-height: 5em;    
+    max-height: 3em;    
 }
 .card{
     height: 250px;

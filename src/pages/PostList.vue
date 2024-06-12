@@ -43,14 +43,13 @@ export default {
       CardComponent
   },
   data() {
-      return {
-        store,
-        posts: [],
-        currentPage: 0,
-        totalPage: 0,
-        params:null,
-
-      }
+    return {
+      store,
+      posts: [],
+      currentPage: 0,
+      totalPage: 0,
+      params:null,
+    }
   },
   methods: {
     getAllPosts() {
