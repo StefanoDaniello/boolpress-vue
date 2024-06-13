@@ -47,30 +47,36 @@
     <div class="row">
         <form @submit.prevent="sendForm()" class="col-12 text-start">
             <div class="mb-3">
-                <input type="text" class="form-control border-0 border-bottom" :class="{ 'is-invalid': errors.name }"
+                <input type="text" class="input border-0 border-bottom" :class="{ 'is-invalid': errors.name }"
                     placeholder="Name" v-model="name" required>
                 <p v-for="(error, index) in errors.name" :key="`message-error-${index}`" class="invalid-feedback">
                     {{ error }}
                 </p>
             </div>
             <div class="mb-3">
-                <input type="email" class="form-control border-0 border-bottom" placeholder="Email" v-model="email"
+                <input type="email" class="input border-0 border-bottom" placeholder="Email" v-model="email"
                     :class="{ 'is-invalid': errors.address }" required>
                 <p v-for="(error, index) in errors.address" :key="`message-error-${index}`" class="invalid-feedback">
                     {{ error }}
                 </p>
             </div>
             <div class="mb-3">
-                <label for="message">Your message</label>
-                <textarea id="message" class="form-control border-0 border-bottom" cols="30" rows="10" v-model="message"
+                <textarea id="message" class="input border-0 border-bottom" cols="30" rows="10" placeholder="Message" v-model="message"
                     :class="{ 'is-invalid': errors.message }" required>{{ message }}</textarea>
                 <p v-for="(error, index) in errors.message" :key="`message-error-${index}`" class="invalid-feedback">
                     {{ error }}
                 </p>
             </div>
-            <button class="btn btn-lg btn-primary text-white" type="submit" :disabled="loading">{{ loading ?
+            <div class="d-flex">
+                <button class="btn btn-lg btn-primary text-white" type="submit" :disabled="loading">{{ loading ?
                 'Sending...'
-                : 'Send' }}</button>
+                : 'Send' }}
+                </button>
+                <button class="btn btn-lg btn-danger text-white mx-4" type="reset" @click="resetForm()"> 
+                    Reset
+                </button>
+            </div>
+           
         </form>
     </div>
 
@@ -121,12 +127,39 @@ export default {
             }).finally(() => {
                 this.loading = false;
             })
+        },
+        resetForm() {
+            this.name = '';
+            this.email = '';
+            this.message = '';
+            this.errors = {
+                name: [],
+                address: [],
+                message: []
+            };
         }
     }
 }
 </script>
 
 <style lang="scss" scoped>
+
+::placeholder {
+    color: #ffffff96;
+  }
+.input {
+  margin: 15px;
+  background: none;
+  border: none;
+  outline: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 20px;
+  width: 100%;
+  box-shadow: inset 2px 5px 10px rgb(5, 5, 5);
+  color: #fff;
+ 
+}
 @keyframes clockwise {
   0% {
     transform: rotate(0deg);
