@@ -339,7 +339,7 @@ export default {
     color: #ffffff96;
   }
 .input {
-  margin: 15px;
+  margin: 15px 0;
   background: none;
   border: none;
   outline: none;
