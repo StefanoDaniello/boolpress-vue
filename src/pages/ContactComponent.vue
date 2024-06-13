@@ -68,13 +68,38 @@
                 </p>
             </div>
             <div class="d-flex">
+                <button class="send">
+                    <div class="svg-wrapper-1" type ="submit"
+                        :disabled="loading" @click="sendAnimation()">
+                        <div class="svg-wrapper">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 24 24"
+                                width="24"
+                                height="24"
+                            >
+                                <path fill="none" d="M0 0h24v24H0z"></path>
+                                <path
+                                fill="currentColor"
+                                d="M1.946 9.315c-.522-.174-.527-.455.01-.634l19.087-6.362c.529-.176.832.12.684.638l-5.454 19.086c-.15.529-.455.547-.679.045L12 14l6-8-8 6-8.054-2.685z"
+                                ></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <span>Send</span>
+                </button>
+                <!-- 
                 <button class="btn btn-lg btn-primary text-white" type="submit" :disabled="loading">{{ loading ?
                 'Sending...'
                 : 'Send' }}
-                </button>
-                <button class="btn btn-lg btn-danger text-white mx-4" type="reset" @click="resetForm()"> 
+                </button> -->
+                <!-- <button class="btn btn-lg btn-danger text-white mx-4" type="reset" @click="resetForm()"> 
                     Reset
+                </button> -->
+                <button class="btn-reset reset mx-3" @click="resetForm()">
+                    <strong>Reset</strong>
                 </button>
+
             </div>
            
         </form>
@@ -137,12 +162,178 @@ export default {
                 address: [],
                 message: []
             };
+        },
+        sendAnimation() {
+            const button = document.querySelector('.send');
+            button.classList.add('animate');
+            setTimeout(() => {
+                button.classList.remove('animate');
+            }, 3000);
         }
     }
 }
 </script>
 
 <style lang="scss" scoped>
+
+.reset {
+  position: relative;
+  margin: 0;
+  padding: 17px 35px;
+  outline: none;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  text-transform: uppercase;
+  background-color: #fff;
+  border: 1px solid rgba(255, 0, 0, 0.959);
+  border-radius: 10px;
+  color: #ff2222;
+  font-weight: 400;
+  font-family: inherit;
+  z-index: 0;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.02, 0.01, 0.47, 1);
+}
+
+.reset span {
+  color: #bd2a2a;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.7px;
+}
+
+.reset:hover {
+  animation: rotate624 0.7s ease-in-out both;
+}
+
+.reset:hover span {
+  animation: storm1261 0.7s ease-in-out both;
+  animation-delay: 0.06s;
+}
+
+@keyframes rotate624 {
+  0% {
+    transform: rotate(0deg) translate3d(0, 0, 0);
+  }
+  25% {
+    transform: rotate(3deg) translate3d(0, 0, 0);
+  }
+  50% {
+    transform: rotate(-3deg) translate3d(0, 0, 0);
+  }
+  75% {
+    transform: rotate(1deg) translate3d(0, 0, 0);
+  }
+  100% {
+    transform: rotate(0deg) translate3d(0, 0, 0);
+  }
+}
+
+@keyframes storm1261 {
+  0% {
+    transform: translate3d(0, 0, 0) translateZ(0);
+  }
+  25% {
+    transform: translate3d(4px, 0, 0) translateZ(0);
+  }
+  50% {
+    transform: translate3d(-3px, 0, 0) translateZ(0);
+  }
+  75% {
+    transform: translate3d(2px, 0, 0) translateZ(0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0) translateZ(0);
+  }
+}
+
+.btn-reset {
+  border: 1px solid;
+  overflow: hidden;
+  position: relative;
+}
+
+.btn-reset span {
+  z-index: 20;
+}
+
+.btn-reset:after {
+  background: #ef6338;
+  content: "";
+  height: 155px;
+  left: -75px;
+  opacity: 0.4;
+  position: absolute;
+  top: -50px;
+  transform: rotate(35deg);
+  transition: all 550ms cubic-bezier(0.19, 1, 0.22, 1);
+  width: 50px;
+  z-index: -10;
+}
+
+.btn-reset:hover:after {
+  left: 120%;
+  transition: all 550ms cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+
+.send {
+  font-family: inherit;
+  font-size: 20px;
+  background: rgb(7, 66, 245);
+  color: white;
+  padding: 0.7em 1em;
+  padding-left: 0.9em;
+  display: flex;
+  align-items: center;
+  border: none;
+  border-radius: 16px;
+  overflow: hidden;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
+.send span {
+  display: block;
+  margin-left: 0.3em;
+  transition: all 0.3s ease-in-out;
+}
+
+.send svg {
+  display: block;
+  transform-origin: center center;
+  transition: transform 0.3s ease-in-out;
+}
+
+.send:hover .svg-wrapper {
+  animation: fly-1 0.6s ease-in-out infinite alternate;
+}
+
+.send:hover svg {
+  transform: translateX(1.2em) rotate(45deg) scale(1.1);
+}
+
+.send:hover span {
+  transform: translateX(5em);
+}
+
+.send:active {
+  transform: scale(0.95);
+}
+
+@keyframes fly-1 {
+  from {
+    transform: translateY(0.1em);
+  }
+
+  to {
+    transform: translateY(-0.1em);
+  }
+}
+
 
 ::placeholder {
     color: #ffffff96;
