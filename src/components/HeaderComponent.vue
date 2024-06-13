@@ -67,10 +67,20 @@ export default {
   color: #3e6ef1;
 }
 header {
-  background-color: rgb(61, 61, 61);
+  background-color: rgb(61, 61, 61, 0.8);
+  height: 100px;
+  font-size: 20px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  display: flex;
   nav {
   #logo{
       color: white !important; 
+      font-size: 25px;
+      font-weight: bold;
     }
   a {
     color: white;
