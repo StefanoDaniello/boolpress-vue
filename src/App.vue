@@ -2,6 +2,7 @@
 
   <HeaderComponent />
   <main class="container my-4">
+    <!-- componenti dei pages -->
     <router-view></router-view>
   </main>
 
